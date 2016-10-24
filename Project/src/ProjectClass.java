@@ -6,31 +6,39 @@ public class ProjectClass extends JPanel {
 
 	private int width = 100;
 	private int height = 100;
-	private int d = 50;
-	
-			
-		public static void main(String[] args) {
-			JFrame frame = new JFrame();
-			ProjectClass ProjectClass = new ProjectClass();
-			
-			frame.setSize(700, 800); //x, y
-			frame.setLocation(300,200);
-			frame.setDefaultCloseOperation(3);
-			frame.setTitle("Project");
-			frame.setResizable(false);
-			frame.setVisible(true);
+	private int d = 50; //diameter
+	private int x = 0;
+	private int y = 0;
+
+	private void moveBall(){
+		x += 1;
+		y += 1;	
+	}
+
+	public void paint(Graphics g){
+		Graphics2D g2d = (Graphics2D) g;
+		g2d.fillOval(x, y, d, d);
+	}
+
+	public static void main(String[] args) {
+		JFrame frame = new JFrame();
+		ProjectClass ProjectClass = new ProjectClass();
+
+		frame.setSize(700, 800); //x, y
+		frame.setLocation(300,200);
+		frame.setDefaultCloseOperation(3);
+		frame.setTitle("Project");
+		frame.setResizable(false);
+		frame.setVisible(true);
+
+		while (true){
+			ProjectClass.moveBall();
+			ProjectClass.repaint();
+			try {
+				Thread.sleep(10);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
 		}
-	    	
-    public void paint(Graphics g){
-    	g.setColor(Color.black);
-    	g.fillRect(0, 0, 700, 800);
-    	g.setColor(Color.red);
-    	g.drawRect(70, 100, width, height);
-    	g.setColor(Color.GREEN);
-    	g.fillRect(160, 200, width, height);
-    	g.setColor(Color.blue);
-    	g.drawOval(30, 250, d, d);
-    	g.setColor(Color.ORANGE);
-    	g.fillOval(400, 520, d, d);
-    	
-    }
+	}
+}
