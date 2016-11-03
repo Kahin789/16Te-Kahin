@@ -3,6 +3,9 @@ import java.util.Scanner;
 public class StenSaxPåseClass {
 		
 	public static void main(String[] args) {
+		for (int i=0; i<3; i++){
+			
+		}
 		
 		int dator;
 		int spelare;
