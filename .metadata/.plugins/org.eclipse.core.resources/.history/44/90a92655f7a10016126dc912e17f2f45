@@ -1,0 +1,17 @@
+import java.awt.*;
+
+public class Racket {
+	
+	private BallClass ballclass;
+	
+	public Racket(BallClass ballclass){
+		this.ballclass = ballclass;
+		
+	}
+	
+	public void paint (Graphics2D g){
+		g.setColor(Color.orange);
+		g.fillRect(x, y, width, height);
+	}
+
+}

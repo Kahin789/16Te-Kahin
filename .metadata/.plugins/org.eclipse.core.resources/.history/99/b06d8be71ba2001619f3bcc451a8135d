@@ -1,0 +1,37 @@
+import java.awt.*;
+import java.awt.event.KeyEvent;
+
+public class Racket {
+	
+	private int width = 70;
+	private int height = 10;
+	private int x = 350;
+	private int y = 790;
+	private int moveX = 2;
+	private BallClass ballclass;
+	
+	public Racket(BallClass ballclass){
+		this.ballclass = ballclass;
+		
+	}
+	
+	public void paint (Graphics2D g){
+		g.setColor(Color.orange);
+		g.fillRect(x, y, width, height);
+	}
+	
+	void move(){
+		if(x + moveX > 0 && x + moveX < ballclass.getWidth() - 70)
+			x += moveX;
+		
+	}
+
+	public void keyPressed(KeyEvent e) {
+		
+	}
+
+	public void keyReleased(KeyEvent e) {
+		
+	}
+
+}

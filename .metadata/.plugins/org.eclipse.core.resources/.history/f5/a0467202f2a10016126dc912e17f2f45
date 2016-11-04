@@ -1,0 +1,44 @@
+import java.awt.Graphics;
+import javax.swing.*;
+import java.awt.*;
+
+public class BallClass extends JPanel {
+	
+	Ball ball = new Ball(this);
+	
+	private void move(){
+	ball.move();
+	
+	}
+	
+	public void paint(Graphics g){
+		super.paint(g);
+		Graphics2D g2d = (Graphics2D) g;
+		ball.paint(g2d);
+		
+	}
+	
+
+	public static void main(String[] args) {
+		JFrame frame = new JFrame();
+		BallClass BallClass = new BallClass();
+
+		frame.setSize(700, 800); //x, y
+		frame.setLocation(300,200);
+		frame.setDefaultCloseOperation(3);
+		frame.add(BallClass);
+		frame.setTitle("Project");
+		frame.setResizable(false);
+		frame.setVisible(true);
+
+		while (true){
+			BallClass.move();
+			BallClass.repaint();
+			try {
+				Thread.sleep(10);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+		}
+	}
+}
