@@ -1,0 +1,154 @@
+package StenSaxPåseClass;
+
+import java.util.Scanner;
+
+public class StenSaxPåseClass {
+
+	private static boolean exit;
+	private static int spelare;
+	private static int gamemode;
+	private static int datorvinster;
+	private static int spelarevinster;
+	private static int oavgjort;
+	private static int dator;
+	private static String modstring;
+	private static boolean modifier;
+	private static String[] val;
+
+	public static void main1(String[] args) {
+		for (int i=0; i<3; i++){
+			
+		}
+		
+		int dator;
+		int spelare;
+		String[] alternativ = {"Sten,", "Sax", "Påse"};
+		
+		System.out.println("Sten Sax Påse");
+		System.out.println("0 = sten, 1 = sax, 2 = påse:");
+		
+		Scanner spelarval = new Scanner(System.in);
+
+		spelare = spelarval.nextInt();
+		
+		spelarval.close();
+		dator = (int) (Math.random()*3);
+		
+		System.out.println("Datorn valde: "+ alternativ[dator]);
+		System.out.println("Du valde: "+ alternativ [spelare]); 
+		
+		
+		if ((spelare == 0 && dator == 1) || (spelare == 1 && dator == 2) || (spelare == 2 && dator == 0))
+			System.out.println("Du vann!");		
+		else if (spelare == dator )
+			System.out.println("Oavgjort!");	
+		else 
+            System.out.println("Förlust!");
+		
+	}
+	
+
+static void game(){
+    dator = 0 + (int)(Math.random() * 3);
+    input(2);
+    System.out.println(" Du valde : "+ val[spelare]);
+    System.out.println(" Datorn valde : "+ val[dator]);
+    if (modifier == false){
+        modstring = "RONDEN";
+    }else{
+        modstring = "MATCHEN";
+    }
+    
+    if(spelare == 2 && dator == 0){
+        System.out.println("  DU VANN " + modstring);
+        spelarevinster++;
+    }else if (spelare == 0 && dator == 2){
+        System.out.println("  DU FÖRLORADE " + modstring);
+        datorvinster++;
+    }
+    else if (spelare == dator)
+    {
+        System.out.println("   " + modstring + " BLEV OAVGJORD");
+        oavgjort++;
+    }else if(spelare == dator-1)
+    {
+        System.out.println("  DU VANN " + modstring);
+        spelarevinster++;
+    }else
+    {
+        System.out.println("  DU FÖRLORADE " + modstring);
+        datorvinster++;
+    }
+}
+
+static void input(int mod){
+    if (mod==1){
+        System.out.print("Välj spelläge:   [0] = En ronda    [1] = Bäst av tre    [5] = Stäng av spelet : ");
+    }else if (mod==2){
+        System.out.print("Välj: [1] = Sten, [2] = Sax, [3] = Påse : ");
+    }
+    
+    Scanner scan = new Scanner(System.in);   
+    while(!scan.hasNextInt()) {
+    System.out.print("Ange ett nummer enligt hänvisningarna: ");
+    scan.next();
+    }
+    
+    if (mod==1){
+        gamemode = scan.nextInt();
+    }else if (mod==2){
+        spelare = scan.nextInt();
+        spelare--;
+    }
+}
+public static void main(String[] args) {
+    while (exit != true){
+        input(1);
+        int gamemode = 0;
+		switch (gamemode) {
+            case 0:
+                once();
+                break;
+            case 1:
+                bestofthree();
+                break;
+            case 5:
+                exit = true;
+            default:
+                break;
+        }
+    }
+    System.out.println("Stänger av spelet...");
+    System.exit(0);
+}
+
+static void bestofthree(){
+    boolean modifier = false;
+    int spelarevinster = 0; int datorvinster = 0; int oavgjort = 0;
+    for (int i=0;i<3;i++){
+        if (i==2){
+            if (spelarevinster==2){
+                break;
+            }else if (datorvinster==2){
+                break;
+            }
+        }
+    game();
+    }
+            if (spelarevinster > datorvinster){
+                System.out.println("   DU VANN MATCHEN BÄST AV TRE");
+            }else if (spelarevinster < datorvinster){
+                System.out.println("   DU FÖRLORADE MATCHEN BÄST AV TRE");
+            }else{
+                System.out.println("   DET BLEV OAVGJORT I MATCHEN BÄST AV TRE");
+            }
+    }
+
+static void once(){
+    boolean modifier = true;
+    game();
+}
+}
+
+	
+	

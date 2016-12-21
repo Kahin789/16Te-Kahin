@@ -1,0 +1,41 @@
+package StenSaxPåseClass;
+
+import java.util.Scanner;
+
+public class StenSaxPåseClass {
+
+	public static void main(String[] args) {
+		for (int i=0; i<3; i++){
+			
+		}
+		
+		int dator;
+		int spelare;
+		String[] alternativ = {"Sten,", "Sax", "Påse"};
+		
+		System.out.println("Sten Sax Påse");
+		System.out.println("0 = sten, 1 = sax, 2 = påse:");
+		
+		Scanner spelarval = new Scanner(System.in);
+
+		spelare = spelarval.nextInt();
+		
+		spelarval.close();
+		dator = (int) (Math.random()*3);
+		
+		System.out.println("Datorn valde: "+ alternativ[dator]);
+		System.out.println("Du valde: "+ alternativ [spelare]); 
+		
+		
+		if ((spelare == 0 && dator == 1) || (spelare == 1 && dator == 2) || (spelare == 2 && dator == 0))
+			System.out.println("Du vann!");		
+		else if (spelare == dator )
+			System.out.println("Oavgjort!");	
+		else 
+            System.out.println("Förlust!");
+		
+	}
+	
+}
+	
+	

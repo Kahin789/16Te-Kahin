@@ -1,0 +1,46 @@
+import java.util.Scanner;
+
+public class PolindromClass {
+
+	public static void main(String[] args) {
+
+	String mening = new String();
+	int längd;
+	Scanner tangentbord = new Scanner(System.in);
+
+	System.out.print("Skriv in en mening: ");
+	mening = tangentbord.nextLine();
+
+	längd = mening.length();
+	System.out.println("Meningen är "+längd+" antal tecken lång.");
+
+	// meningen baklänges.
+	// jag skapar en for-loop som går från slutet till början av mening
+	System.out.print("Vi har vänt på strängen: ");
+	for (int plats = längd-1 ; plats >= 0 ; plats--){
+	System.out.print(mening.charAt(plats));
+	}
+	System.out.println();
+	// Jag ska kontrollera om strängen är ett palindrom.
+	// Jag använder en annan metod för att vända en sträng.
+
+	String reversed = new StringBuilder(mening).reverse().toString();
+	
+	// Vi tar bort alla mellanslag ur båda strängarna.
+	mening = mening.replaceAll(" ", "");
+	reversed = reversed.replaceAll(" ", "");
+
+	if(mening.equalsIgnoreCase(reversed)){
+	System.out.println("Palindrom!");
+	}
+	*/
+	// Vi gör allting i IF-satsen, det blir mindre jobb.
+	if(mening.replaceAll(" ", "").equalsIgnoreCase(reversed.replaceAll(" ", "")))
+	{
+	System.out.println("Palindrom!");	
+	}
+
+	tangentbord.close();
+	}
+	}
+
