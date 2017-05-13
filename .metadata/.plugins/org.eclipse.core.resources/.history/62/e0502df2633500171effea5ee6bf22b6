@@ -1,0 +1,41 @@
+import javax.swing.*;
+
+public class Guessnumber {
+
+	public static void main(String arg[]) {
+		String s = JOptionPane.showInputDialog(null, "hur många försök vill du ha?");
+		String na = JOptionPane.showInputDialog(null, " Vad heter du? ");
+		int randNum = (int) (1 + Math.random() * 100);
+		int n = Integer.parseInt(s);
+		for (int i = 0; i < n; i++) {
+			String input = JOptionPane.showInputDialog(null, "Din gissning?");
+			int guess = Integer.parseInt(input);
+
+			// Den här koden visar om talet är mindre
+			if (guess > randNum)
+				JOptionPane.showMessageDialog(null, "Talet är mindre än: " + guess);
+
+			// Den här om talet är större
+			if (guess < randNum)
+				JOptionPane.showMessageDialog(null, "Talet är större än: " + guess);
+
+			// Den här koden visar om du gissade rätt
+			if (guess == randNum) {
+				JOptionPane.showMessageDialog(null, "Grattis, du gissdade rätt!");
+				break;
+			}
+		}
+		// Den här koden visar talet
+		JOptionPane.showMessageDialog(null, na + " talet var: " + randNum);
+		int knappNr = JOptionPane.showConfirmDialog(null, " vill du spela igen" + na + "?");
+		if (knappNr == 0)
+			JOptionPane.showMessageDialog(null, " tyvärr går det inte");
+
+		else if (knappNr == 1)
+			JOptionPane.showMessageDialog(null, "tack för att du spelade");
+		else {
+			JOptionPane.showMessageDialog(null, " du har avbrutit spelet");
+
+		}
+	}
+}
